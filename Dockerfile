@@ -18,13 +18,16 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Descargar el codigo oficial empaquetado directo en la carpeta de trabajo (Sin Git)
+# Descargar el codigo oficial empaquetado directo en la carpeta de trabajo
 WORKDIR /app
-RUN curl -L https://github.com -o coop.zip \
+RUN curl -L https://github.com/coop-deluxe/sm64coopdx \
     && unzip coop.zip \
     && cp -r sm64coopdx-main/* . \
     && cp -r sm64coopdx-main/.* . 2>/dev/null || true \
     && rm -rf sm64coopdx-main coop.zip
+
+# Compilar la versión 'headless' (Servidor dedicado para Linux)
+RUN make HEADLESS=1
 
 # Crear la carpeta de mods interna del servidor
 RUN mkdir -p /root/.local/share/sm64coopdx/mods
@@ -41,5 +44,6 @@ RUN if [ -f /root/.local/share/sm64coopdx/mods/mods.zip ]; then \
 # Exponer el puerto requerido por Render
 EXPOSE 8080
 
-# Comando para ejecutar el servidor conectado a CoopNet con tus mods activos
-CMD ./sm64coopdx --headless --coopnet "" --playername "sansitoTH Mario Hunt 24/7" --playercount 16 --console --port 8080
+# Comando definitivo que ejecuta el ejecutable headless real generado en la carpeta build
+CMD ./build/us_pc/sm64coopdx --headless --coopnet "" --playername "sansitoTH Mario Hunt 24/7" --playercount 16 --console --port 8080
+
