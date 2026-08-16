@@ -26,9 +26,6 @@ RUN curl -L https://github.com -o coop.zip \
     && cp -r sm64coopdx-main/.* . 2>/dev/null || true \
     && rm -rf sm64coopdx-main coop.zip
 
-# Compilar la versión 'headless' (servidor dedicado sin gráficos)
-RUN make HEADLESS=1
-
 # Crear la carpeta de mods interna del servidor
 RUN mkdir -p /root/.local/share/sm64coopdx/mods
 
