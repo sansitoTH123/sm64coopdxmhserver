@@ -18,9 +18,14 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Clonar el repositorio oficial de forma directa y segura en la raíz de trabajo
+# Descargar el codigo oficial empaquetado directo en la carpeta de trabajo (Sin Git)
 WORKDIR /app
-RUN .git clone --depth 1 https://github.com/coop-deluxe/sm64coopdx && cp -r /tmp/sm64/* /app/ && cp -r /tmp/sm64/.* /app/ 2>/dev/null || true && rm -rf /tmp/sm64
+RUN curl -L https://github.com -o coop.zip \
+    && unzip coop.zip \
+    && cp -r sm64coopdx-main/* . \
+    && cp -r sm64coopdx-main/.* . 2>/dev/null || true \
+    && rm -rf sm64coopdx-main coop.zip
+
 # Compilar la versión 'headless' (servidor dedicado sin gráficos)
 RUN make HEADLESS=1
 
