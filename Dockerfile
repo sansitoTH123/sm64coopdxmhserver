@@ -18,9 +18,9 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Clonar el código fuente oficial de sm64coopdx
+# Clonar el repositorio oficial de forma directa y segura en la raíz de trabajo
 WORKDIR /app
-RUN git clone --recursive https://github.com/coop-deluxe/sm64coopdx
+RUN git clone --depth 1 https://github.com .
 
 # Compilar la versión 'headless' (servidor dedicado sin gráficos)
 RUN make HEADLESS=1
@@ -41,4 +41,4 @@ RUN if [ -f /root/.local/share/sm64coopdx/mods/mods.zip ]; then \
 EXPOSE 8080
 
 # Comando para ejecutar el servidor conectado a CoopNet con tus mods activos
-CMD ./sm64coopdx --headless --coopnet "" --playername "SansitoTH Mario Hunt 24/7" --playercount 16 --console --port 8080
+CMD ./sm64coopdx --headless --coopnet "" --playername "sansitoTH Mario Hunt 24/7" --playercount 16 --console --port 8080
