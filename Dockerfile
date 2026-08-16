@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
 
 # Clonar el repositorio oficial de forma directa y segura en la raíz de trabajo
 WORKDIR /app
-RUN git clone --depth 1 https://github.com /tmp/sm64 \
+RUN git clone --depth 1 https://github.com/coop-deluxe/sm64coopdx
     && cp -r /tmp/sm64/* /app/ \
     && cp -r /tmp/sm64/.* /app/ 2>/dev/null || true \
     && rm -rf /tmp/sm64
