@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
 
 # Clonar el repositorio oficial de forma directa y segura en la raíz de trabajo
 WORKDIR /app
-RUN git clone --depth 1 https://github.com .
+RUN git clone --depth 1 https://github.com/coop-deluxe/sm64coopdx
 
 # Compilar la versión 'headless' (servidor dedicado sin gráficos)
 RUN make HEADLESS=1
