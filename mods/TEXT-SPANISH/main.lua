@@ -1,0 +1,3 @@
+-- name: \\#F4E31D\\SM64EX-COOP SPANISH!
+-- incompatible: .
+-- description: \\#F4E31D\\sm64ex-coop EN LATINO\n\n POR PRIMERA VEZ! ESPERO DISFRUTES AUN MAS DE TUS PARTIDAS AHORA 100% LATINO\n\nTraducido por \\#F4E31D\\XxCmbRxX Y Lucho_Gamer
