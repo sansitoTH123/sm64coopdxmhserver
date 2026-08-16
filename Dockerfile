@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
 
 # Clonar el código fuente oficial de sm64coopdx
 WORKDIR /app
-RUN git clone --recursive https://github.com/coop-deluxe/sm64coopdx.
+RUN git clone --recursive https://github.com/coop-deluxe/sm64coopdx
 
 # Compilar la versión 'headless' (servidor dedicado sin gráficos)
 RUN make HEADLESS=1
